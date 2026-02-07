@@ -1,0 +1,1 @@
+bootloader prank with OS garbage collector etc. that will run on RAM
