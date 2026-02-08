@@ -6,8 +6,7 @@ header_start:
     dd 0                         ; i386 32-bit Protected Mode
     dd header_end - header_start ; Header length (how much data to read)
     ; Checksum
-    dd 0x100000000 - (0xE85250D6 + 0 + (header_end - header_start))
-
+    dd -(0xE85250D6 + 0 + (header_end - header_start))
     ; End tag
     dw 0    ; type
     dw 0    ; flags
@@ -42,3 +41,4 @@ align 16 ; Modern CPUs grab 16 bytes at a time
 stack_bottom: ; stacks grow towards lower memory addresses
     resb 0x4000 ; 16 KB stack
 stack_top:
+section .note.GNU-stack noalloc noexec nowrite progbits ; for modern compatability
